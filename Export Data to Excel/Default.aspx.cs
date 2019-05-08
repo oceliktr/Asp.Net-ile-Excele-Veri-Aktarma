@@ -23,7 +23,7 @@ public partial class _Default : System.Web.UI.Page
         OgrenciInfo ogr = new OgrenciInfo();
         List<OgrenciInfo> ogrenci = ogr.OgrenciListesi().OrderBy(x => x.Adi).ToList();
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); //StringBuilder metin birleştirme sınıfı
 
         sb.Append("<table border = '1'>");
         sb.Append("<tr><th style='text-align: center;padding: 18px;font-size: 25px;font-weight: bold;' colspan='6'>KURTULUŞ ORTAOKULU</th></tr>");
@@ -51,14 +51,15 @@ public partial class _Default : System.Web.UI.Page
         sb.Append("</table>");
 
         Response.Clear();
-        Response.Buffer = true;
+        Response.Buffer = true; //Tüm veriler yüklenmesi bitmeden Browser'e gönderilmesini engelle. 
         Response.AddHeader("content-disposition", "attachment;filename=" + dosyaAdi);
         Response.ContentEncoding = Encoding.GetEncoding("ISO-8859-9"); //Türkçe karakter sorunu için 
         Response.Charset = "ISO-8859-9";
         Response.ContentType = "application/vnd.ms-excel";
 
         Response.Output.Write(sb.ToString());
-        Response.Flush();
-        Response.End();
+
+        Response.Flush(); //tutulan verileri boşalt.
+        Response.End(); 
     }
 }

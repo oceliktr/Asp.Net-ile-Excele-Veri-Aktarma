@@ -7,7 +7,7 @@ public class OgrenciInfo
     public string Cinsiyeti { get; set; }
     public int Sinifi { get; set; }
     public int Numarasi { get; set; }
-
+    
     public OgrenciInfo()
     {
 
